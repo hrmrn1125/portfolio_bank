@@ -1,5 +1,5 @@
 <template>
-    <div class="panel panel-flex deposit-withdrawal-details no-decoration">
+    <div class="deposit-withdrawal-details no-decoration">
         <div class="panel-body panel-body-flex">
             <div class="tabs-wrapper">
                 <ul class="tabs short">
@@ -42,19 +42,5 @@ export default {
 </script>
 
 <style>
-.account-overview {
-    margin: 16px 2vw;
-}
 
-.account-overview-details {
-    width: 30vw;
-    float: left;
-    background: #ffffff;
-}
-
-.chart-area {
-    width: 65vw;
-    float: right;
-    background: #ffffff;
-}
 </style>

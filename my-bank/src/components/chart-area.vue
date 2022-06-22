@@ -257,3 +257,122 @@ export default {
     }
 };
 </script>
+
+<style>
+.account-summary {
+  display: flex;
+  position: relative;
+  text-align: right;
+
+  .graph {
+    flex: 1 1 120px;
+    max-width: 120px;
+    width: 120px;
+
+    .chart-wrapper {
+      position: relative;
+      z-index: 10;
+    }
+  }
+
+  .total.amount span:not(.unit) {
+    font-size: 1.3rem;
+  }
+
+  .before-ratio {
+    display: flex;
+    flex-direction: column;
+
+    span:first-child {
+      text-align: left;
+    }
+  }
+
+  .summary {
+    justify-content: flex-end;
+    flex: 1 1 auto;
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+#chartjs-tooltip {
+  position: absolute;
+  color: #fff;
+  background-color: $tooltip-bg;
+  z-index: 10;
+  border-radius: 3px;
+  padding: 6px 10px;
+  font-size: 80%;
+  min-width: 96px;
+  text-align: center;
+}
+
+@include breakpoint($screen-tablet) {
+  .account-summary {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    min-width: 366px;
+
+    .graph {
+      align-items: center;
+      display: flex;
+      flex: 1 1 100%;
+      height: 300px;
+      justify-content: center;
+      max-width: none;
+      width: 80%;
+
+      .chart-wrapper {
+        display: flex;
+        height: 100%;
+        width: 290px;
+      }
+    }
+
+    .summary {
+      display: flex;
+      flex-direction: column;
+      max-width: 180px;
+      position: absolute;
+      text-align: left;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      top: 50%;
+
+      p {
+        margin: 8px 0;
+
+        &:nth-child(2) {
+          text-align: right;
+        }
+
+        &:nth-child(3) {
+          align-items: center;
+          display: flex;
+
+          .amount {
+            flex: 1 1 auto;
+          }
+        }
+      }
+
+      .before-ratio {
+        flex-direction: row;
+      }
+
+      .amount span:not(.unit) {
+        font-size: 1.2rem;
+      }
+
+      .amount.total span:not(.unit) {
+        font-size: 1.6rem;
+      }
+    }
+  }
+}
+
+</style>

@@ -104,11 +104,83 @@ export default {
         }
     }
 
-    @include breakpoint(screen 769px) {
+@include breakpoint(screen 769px) {
         .button-top {
             a:hover {
                 opacity: 1;
             }
         }
     }
+</style>
+
+<style>
+#footer {
+  background: $footer-bg;
+  font-size: 0.8rem;
+  color: $footer-color;
+
+  > .container {
+    font-size: 0.9rem;
+    padding: 16px;
+
+    > div {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      line-height: 45px;
+
+      & + div {
+        margin-top: 16px;
+      }
+    }
+
+    a {
+      display: inline-block;
+      color: #fff;
+      min-width: 136px;
+    }
+
+    .copyright {
+      color: $footer-copyright-color;
+      font-size: .7rem;
+      line-height: 22px;
+      margin-top: 8px;
+    }
+  }
+}
+
+@include breakpoint($screen-tablet) {
+  #footer {
+    min-width: 1200px;
+
+    > .container {
+      font-size: 0.9rem;
+      padding: 24px 0 16px 0;
+      padding-left: 32px;
+      width: 1080px;
+
+      > div {
+        line-height: 23px;
+        max-width: 1024px;
+      }
+
+      div + div {
+        margin-top: 16px;
+      }
+
+      a {
+        font-size: 0.9rem;
+        min-width: auto;
+        min-width: inherit;
+      }
+
+      .copyright {
+        line-height: 8px;
+        margin-top: 16px;
+      }
+    }
+  }
+}
+
 </style>

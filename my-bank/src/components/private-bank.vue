@@ -52,6 +52,11 @@ export default {
 </script>
 
 <style>
+.content {
+    width: 100%;
+    margin: 0;
+}
+
 .prev-login {
     margin-right: 8px;
     text-align: right;

@@ -1,5 +1,5 @@
 <template>
-    <div class="panel full-width information-area">
+    <div class="information-area">
         <table class="information-tbl">
             <tbody>
                 <tr>
@@ -111,6 +111,17 @@ export default {
 </script>
 
 <style>
+.information-area::before {
+    content: '';
+    background: #BF0000;
+    height: 3px;
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    z-index: 10;
+}
+
 .information-area {
     width: 96vw;
     border: solid 1px #dAdAd9;
@@ -209,5 +220,11 @@ td.information-right {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+
+@media screen and (min-width:1400px) {
+.information-area {
+    width: 1400px;
+}
 }
 </style>

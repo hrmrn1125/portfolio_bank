@@ -1,6 +1,6 @@
 <template>
-    <div class="panel foreign-exchange-rate">
-        <header class="header-accent">
+    <div class="foreign-exchange-rate">
+        <header>
             <h4>為替レート</h4>
             <a href="#" class="link-nav">一覧へ</a>
         </header>
