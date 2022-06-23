@@ -1,76 +1,74 @@
 <template>
-    <div class="account-overview full-width">
-        <div class="overview-wrap">
-            <div class="panel-body account-overview-details inner-block">
-                <p class="bank-details text-muted">
-                    <span class="branch-name">支店名: <span v-text="dispBranchName"></span>（{{dispBranchCode}}）</span>
-                    <span class="branch-number">口座番号: <span v-text="dispAccountNumber"></span></span>
-                </p>
-                <div class="smartphone-only">
-                    <div>現在のカスタマーステージ：<span class="rank-name" v-text="dispRankName"></span></div>
-                    <a href="#" class="link-nav text-right">カスタマーステージについて</a>
+    <div class="panel account-overview full-width">
+        <div class="account-overview-details">
+            <p class="bank-details full-width text-muted">
+                <span class="branch-name">支店名: <span v-text="dispBranchName"></span>（{{dispBranchCode}}）</span>
+                <span class="branch-number">口座番号: <span v-text="dispAccountNumber"></span></span>
+            </p>
+            <div class="smartphone-only">
+                <div>現在のカスタマーステージ：<span class="rank-name" v-text="dispRankName"></span></div>
+                <a href="#" class="link-nav text-right">カスタマーステージについて</a>
+            </div>
+            <div class="rank-privileges">
+                <span class="label label-notice">ATM無料あと <span v-text="dispAtmFeeFreeCount"></span>回</span>
+                <span class="label label-notice">振込無料あと <span v-text="dispTransferFeeFreeCount"></span>回</span>
+            </div>
+            <div class="deposit-account">
+                <a href="#" class="link-nav">円普通預金（代表口座）</a>
+                <span class="amount">
+                    <span class="base"><span class="money" v-text="dispOrdinaryDepositTotalBalance"></span><small class="unit">円</small></span>
+                    <a href="#" class="desktop-only button button-ghost">振込</a>
+                </span>
+            </div>
+            <div class="uncollected-amount full-width text-minus">
+                <span>未収金：</span><span v-text="dispUncollectedAmount"></span>
+                <small class="unit">円</small>
+            </div>
+            <div class="limit-amount">
+                <a href="#" class="link-nav">
+                    <span>振込限度額（<span class="num">1</span>日）</span>
+                </a>
+                <div class="text-small text-right">
+                    <span class="num" v-text="dispAvailableTransferAmount"></span><span>円 /</span>
+                    <span class="num" v-text="dispTransferDailyLimit"></span><span>円</span>
                 </div>
-                <div class="rank-privileges">
-                    <span class="label label-notice">ATM無料あと <span v-text="dispAtmFeeFreeCount"></span>回</span>
-                    <span class="label label-notice">振込無料あと <span v-text="dispTransferFeeFreeCount"></span>回</span>
-                </div>
-                <div class="deposit-account">
-                    <a href="#" class="link-nav">円普通預金（代表口座）</a>
+            </div>
+            <div class="smartphone-only sp-transfer-btn-wrapper">
+                <a href="#" class="button button-ghost full-size">振込</a>
+            </div>
+            <template>
+                <div class="securities-account-balance">
+                    <a href="#" class="link-nav">証券コネクト口座</a>
                     <span class="amount">
-                        <span class="base"><span v-text="dispOrdinaryDepositTotalBalance"></span><small class="unit">円</small></span>
-                        <a href="#" class="desktop-only button button-ghost">振込</a>
+                        <span v-text="dispSweepTotalBalance"></span><small class="unit">円</small>
                     </span>
+                    <a href="#" class="button button-ghost">振替</a>
                 </div>
-                <div class="uncollected-amount full-width text-minus">
-                    <span>未収金：</span><span v-text="dispUncollectedAmount"></span>
-                    <small class="unit">円</small>
+                <div class="to-sec-link">
+                    <a href="/login/sec-redirect" target="_blank" class="link-nav">GMOクリック証券 Webサイトへ</a>
                 </div>
-                <div class="limit-amount">
-                    <a href="#" class="link-nav">
-                        <span>振込限度額（<span class="num">1</span>日）</span>
-                    </a>
-                    <div class="amount text-right">
-                        <span class="amount"><span class="num" v-text="dispAvailableTransferAmount"></span><small class="unit">円</small><span>&emsp;/</span></span>
-                        <span class="amount"><span class="num" v-text="dispTransferDailyLimit"></span><small class="unit">円</small></span>
-                    </div>
-                </div>
-                <div class="smartphone-only sp-transfer-btn-wrapper">
-                    <a href="#" class="button button-ghost full-size" @click.prevent=";">振込</a>
-                </div>
-                <div>
-                    <div class="securities-account-balance">
-                        <a href="#" class="link-nav">証券コネクト口座</a>
-                        <span class="amount">
-                            <span v-text="dispSweepTotalBalance"></span><small class="unit">円</small>
-                        </span>
-                        <a href="#" class="button button-ghost">振替</a>
-                    </div>
-                    <div class="to-sec-link">
-                        <a href="#" class="link-nav">HARAクリック証券 Webサイトへ</a>
-                    </div>
-                </div>
-                <div class="other-accounts-balance">
-                    <p>
-                        <a href="#" class="link-nav">円定期預金（総額）</a>
-                        <span class="amount">
-                            <span v-text="dispTermDepositTotalBalance"></span><small class="unit">円</small>
-                        </span>
-                    </p>
-                    <p>
-                        <a href="#" class="link-nav">外貨普通預金（総評価額）</a>
-                        <span class="amount">
-                            <span v-text="dispFcyOrdinaryDepositTotalJpyBalance"></span><small class="unit">円</small>
-                        </span>
-                    </p>
-                </div>
+            </template>
+            <div class="other-accounts-balance">
+                <p>
+                    <a href="#" class="link-nav">円定期預金（総額）</a>
+                    <span class="amount">
+                        <span v-text="dispTermDepositTotalBalance"></span><small class="unit">円</small>
+                    </span>
+                </p>
+                <p>
+                    <a href="#" class="link-nav">外貨普通預金（総評価額）</a>
+                    <span class="amount">
+                        <span v-text="dispFcyOrdinaryDepositTotalJpyBalance"></span><small class="unit">円</small>
+                    </span>
+                </p>
             </div>
-            <div class="inner-block panel-body chart-area">
-                <div class="desktop-only customer-stage text-right">
-                    <div>現在のカスタマーステージ：<span class="rank-name" v-text="dispRankName"></span></div>
-                    <a href="#" class="link-nav text-right">カスタマーステージについて</a>
-                </div>
-                <chart-area :chartData = "chartData"></chart-area>
+        </div>
+        <div class="inner-block panel-body chart-area">
+            <div class="desktop-only customer-stage text-right">
+                <div>現在のカスタマーステージ：<span class="rank-name" v-text="dispRankName"></span></div>
+                <a href="#" class="link-nav text-right">カスタマーステージについて</a>
             </div>
+            <chart-area></chart-area>
         </div>
     </div>
 </template>
@@ -86,22 +84,22 @@ export default {
         return {
             accountNumber: '7777777',
             atmFeeFreeCount: '5',
-            availableTransferAmount: '100,000',
+            availableTransferAmount: '100000',
             branchCode: '007',
             branchName: 'はら支店',
             chartArea: null,
             queryDatetime: '',
             rankName: 'マスターステージ',
-            transferDailyLimit: '100,000,000',
+            transferDailyLimit: '100000000',
             transferFeeFreeCount: '5',
             uncollectedAmount: '300',
             chartData: {
-                totalBalance: '11,000',
-                lastDayTotalBalance: '10,001',
-                ordinaryDepositTotalBalance: '5,000',
-                sweepTotalBalance: '3,000',
-                termDepositTotalBalance: '1,001',
-                fcyOrdinaryDepositTotalJpyBalance: '1,000'
+                totalBalance: '11000',
+                lastDayTotalBalance: '10001',
+                ordinaryDepositTotalBalance: '5000',
+                sweepTotalBalance: '3000',
+                termDepositTotalBalance: '1001',
+                fcyOrdinaryDepositTotalJpyBalance: '1000'
             }
         };
     },
@@ -137,7 +135,7 @@ export default {
             return this.rankName;
         },
         dispSweepTotalBalance () {
-            return this.chartData.sweepTotalBalance;
+            return this.chartData.sweepTotalBalance, 0, EMPTY;
         },
         dispTermDepositTotalBalance () {
             return this.chartData.termDepositTotalBalance;
@@ -153,12 +151,24 @@ export default {
         },
         dispUncollectedAmount () {
             return this.uncollectedAmount;
+        },
+        transferDailyLimitUnit () {
+            return this.transferDailyLimit;
         }
     }
 };
 </script>
 
 <style>
+.account-overview {
+    display: flex;
+    background: #ffffff;
+    margin: 16px auto 0;
+    padding: 20px 0 0;
+    width: 96vw;
+    position: relative;
+}
+
 .account-overview::before {
     content: '';
     background: #BF0000;
@@ -170,22 +180,9 @@ export default {
     z-index: 10;
 }
 
-.account-overview  {
-    position: relative;
-    margin: 24px auto 0;
-    width: 96vw;
-    background: #ffffff;
-}
-
-.overview-wrap {
-    display: flex;
-    padding: 20px;
-}
-
 .account-overview-details {
     font-size: 14px;
     width: 55%;
-    text-align: left;
 }
 
 .account-overview-details a {
@@ -197,8 +194,8 @@ export default {
     flex-wrap: wrap;
     display: block;
     line-height: 20px;
-    margin-top: 0;
-    margin-bottom: 12px;
+    margin: 0 0 12px 20px;
+    text-align: left;
 }
 
 .branch-name {
@@ -208,6 +205,8 @@ export default {
 .rank-privileges {
     color: rgb(36, 39, 43);
     font-size: 14px;
+    margin-left: 20px;
+    text-align: left;
 }
 
 .label-notice {
@@ -219,83 +218,50 @@ export default {
     min-width: 10px;
     margin-right: 8px;
     padding: 4px 16px;
-    text-align: center;
     vertical-align: baseline;
 }
 
 .deposit-account {
-    align-items: center;
     color: rgb(36, 39, 43);
     display: flex;
-    flex-basis: 100%;
-    flex-direction: row;
-    justify-content: flex-end;
+    justify-content: space-between;
     margin-top: 24px;
+    margin-left: 20px;
     min-height: 32px;
     position: relative;
 }
-
-
-.link-nav {
-    bottom: 4px;
-    color: rgb(229, 115, 115);
-    cursor: pointer;
-    display: block;
-    font-size: 14px;
-    height: 22px;
-    left: 0;
-    line-height: 22px;
-    padding-right: 15px;
-}
-
-.link-nav::after {
-    content: "";
-    display: block;
-    font-size: 16px;
-    height: 22px;
-    position: absolute;
-    right: 0px;
-    top: 1px;
-    width: 16px;
-}
-
 
 .amount {
     color: rgb(36, 39, 43);
     display: flex;
     justify-content: flex-end;
     margin-left: 8px;
-    text-align: right;
+}
+
+.amount .money {
+    font-size: 26px;
 }
 
 .amount .base {
     align-items: flex-end;
-    display: flex;
+    display: inline-block;
 }
 
 .unit {
     color: rgb(36, 39, 43);
-    display: flex;
+    display: inline-block;
     font-size: 12px;
     margin-left: 3px;
-    text-align: right;
-}
-
-.account-overview-details a.button-ghost {
-    color: rgb(229, 115, 115);
 }
 
 .button-ghost {
-    appearance: none;
     background-attachment: scroll;
     border: solid 1px rgb(229, 115, 115);
-    box-shadow: none;
     box-sizing: border-box;
     cursor: pointer;
     display: block;
     font-size: 12px;
     height: 32px;
-    justify-content: center;
     letter-spacing: 1px;
     line-height: 30px;
     margin-left: 8px;
@@ -305,6 +271,10 @@ export default {
     text-decoration: none;
     white-space: nowrap;
     width: 46px;
+}
+
+.account-overview-details a.button-ghost {
+    color: rgb(229, 115, 115);
 }
 
 .uncollected-amount .unit {
@@ -321,8 +291,19 @@ export default {
     margin-right: 54px;
 }
 
-.limit-amount .text-right {
-    text-align: right;
+.limit-amount {
+    display: flex;
+    justify-content: space-between;
+    margin: 24px 0 0 20px;
+}
+
+.limit-amount .text-right .num {
+    font-size: 26px;
+    margin: 0 4px;
+}
+
+.chart-area {
+    width: 45%;
 }
 
 @media screen and (min-width:1400px) {
