@@ -48,8 +48,8 @@ export default {
                 {
                     customerRateId: '10001',
                     currency: 'USD',
-                    ttb: '110.120',
-                    tts: '110.520',
+                    ttb: '110,120',
+                    tts: '110,520',
                     isValidRate: '1',
                     currencyName: '米ドル',
                     displayFractionLength: '2',
@@ -60,8 +60,8 @@ export default {
                 }, {
                     customerRateId: '10001',
                     currency: 'USD',
-                    ttb: '110.120',
-                    tts: '110.520',
+                    ttb: '110,120',
+                    tts: '110,520',
                     ttbRiseOrFall: '1',
                     ttmRiseOrFall: '2',
                     ttsRiseOrFall: '2',
@@ -75,8 +75,8 @@ export default {
                 }, {
                     customerRateId: '10001',
                     currency: 'USD',
-                    ttb: '110.120',
-                    tts: '110.520',
+                    ttb: '110,120',
+                    tts: '110,520',
                     ttbRiseOrFall: '1',
                     ttmRiseOrFall: '2',
                     ttsRiseOrFall: '2',
@@ -90,8 +90,8 @@ export default {
                 }, {
                     customerRateId: '10001',
                     currency: 'USD',
-                    ttb: '110.120',
-                    tts: '110.520',
+                    ttb: '110,120',
+                    tts: '110,520',
                     ttbRiseOrFall: '1',
                     ttmRiseOrFall: '2',
                     ttsRiseOrFall: '2',

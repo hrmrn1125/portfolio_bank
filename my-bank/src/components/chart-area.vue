@@ -27,7 +27,7 @@
 
 <script>
 import { debounce } from 'lodash';
-import BigNumber from 'bignumber.js';
+import { BigNumber } from 'bignumber.js';
 import ChartJS from 'chart.js';
 import { formatDate } from '@/assets/js/date-utils';
 import { formatNumberString } from '@/assets/js/string-utils';
@@ -36,16 +36,19 @@ import { isSP } from '@/assets/js/device-utils';
 
 export default {
     name: 'chartArea',
-    props: {
-        chartData: {
-            type: Object
-        }
-    },
     data () {
         return {
             isSP: isSP(),
             chart: null,
-            queryDatetime: '20220707120000000'
+            queryDatetime: '20220707120000000',
+            chartData: {
+                totalBalance: '11,000',
+                lastDayTotalBalance: '10,001',
+                ordinaryDepositTotalBalance: '5,000',
+                sweepTotalBalance: '3,000',
+                termDepositTotalBalance: '1,001',
+                fcyOrdinaryDepositTotalJpyBalance: '1,000'
+            }
         };
     },
     created () {
@@ -233,7 +236,7 @@ export default {
                     }
                 },
                 data: {
-                    labels: this.labels, //[{ label: '普通預金', balance: '3,000円' }, { label: '証券コネクト口座残高', balance: '50,000円' }, { label: '定期預金', balance: '12,000円' }, { label: '外貨総残高', balance: '100円' }],
+                    labels: this.labels,
                     datasets: [{
                         label: '#',
                         data: this.balanceRatios,
@@ -260,119 +263,117 @@ export default {
 
 <style>
 .account-summary {
-  display: flex;
-  position: relative;
-  text-align: right;
+    text-align: right;
+    position: relative;
+    width: 45%;
+}
 
-  .graph {
-    flex: 1 1 120px;
+.account-summary .graph {
+    display: block;
     max-width: 120px;
     width: 120px;
+}
 
-    .chart-wrapper {
-      position: relative;
-      z-index: 10;
-    }
-  }
+.account-summary .chart-wrapper {
+    position: relative;
+    z-index: 10;
+}
 
-  .total.amount span:not(.unit) {
+.account-summary .total.amount span:not(.unit) {
     font-size: 1.3rem;
-  }
+}
 
-  .before-ratio {
+.account-summary .before-ratio {
     display: flex;
     flex-direction: column;
+}
+.account-summary span:first-child {
+    text-align: left;
+}
 
-    span:first-child {
-      text-align: left;
-    }
-  }
-
-  .summary {
+.account-summary .summary {
     justify-content: flex-end;
     flex: 1 1 auto;
-
-    p:last-child {
-      margin-bottom: 0;
-    }
-  }
+}
+.account-summary p:last-child {
+    margin-bottom: 0;
 }
 
 #chartjs-tooltip {
-  position: absolute;
-  color: #fff;
-  background-color: $tooltip-bg;
-  z-index: 10;
-  border-radius: 3px;
-  padding: 6px 10px;
-  font-size: 80%;
-  min-width: 96px;
-  text-align: center;
+    position: absolute;
+    color: #fff;
+    background-color: #BF0000;
+    z-index: 10;
+    border-radius: 3px;
+    padding: 6px 10px;
+    font-size: 80%;
+    min-width: 96px;
+    text-align: center;
 }
 
-@include breakpoint($screen-tablet) {
-  .account-summary {
+@media screen and (max-width:1060px) {
+.account-summary {
     align-items: center;
     display: flex;
     justify-content: center;
     min-width: 366px;
+}
 
-    .graph {
-      align-items: center;
-      display: flex;
-      flex: 1 1 100%;
-      height: 300px;
-      justify-content: center;
-      max-width: none;
-      width: 80%;
+.account-summary .graph {
+    align-items: center;
+    display: flex;
+    flex: 1 1 100%;
+    height: 300px;
+    justify-content: center;
+    max-width: none;
+    width: 80%;
+}
 
-      .chart-wrapper {
-        display: flex;
-        height: 100%;
-        width: 290px;
-      }
-    }
+.account-summary .graph .chart-wrapper {
+    display: flex;
+    height: 100%;
+    width: 290px;
+}
 
-    .summary {
-      display: flex;
-      flex-direction: column;
-      max-width: 180px;
-      position: absolute;
-      text-align: left;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      top: 50%;
+.account-summary .summary {
+    display: flex;
+    flex-direction: column;
+    max-width: 180px;
+    position: absolute;
+    text-align: left;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    top: 50%;
+}
 
-      p {
-        margin: 8px 0;
+.account-summary .summary p {
+    margin: 8px 0;
+}
 
-        &:nth-child(2) {
-          text-align: right;
-        }
+.account-summary .summary p:nth-child(2) {
+    text-align: right;
+}
 
-        &:nth-child(3) {
-          align-items: center;
-          display: flex;
+.account-summary .summary p:nth-child(3) {
+    align-items: center;
+    display: flex;
+}
 
-          .amount {
-            flex: 1 1 auto;
-          }
-        }
-      }
+.account-summary .summary p .amount {
+    flex: 1 1 auto;
+}
 
-      .before-ratio {
-        flex-direction: row;
-      }
+.account-summary .summary .before-ratio {
+    flex-direction: row;
+}
 
-      .amount span:not(.unit) {
-        font-size: 1.2rem;
-      }
+.account-summary .summary .amount span:not(.unit) {
+    font-size: 1.2rem;
+}
 
-      .amount.total span:not(.unit) {
-        font-size: 1.6rem;
-      }
-    }
-  }
+.account-summary .summary .amount.total span:not(.unit) {
+    font-size: 1.6rem;
+}
 }
 
 </style>

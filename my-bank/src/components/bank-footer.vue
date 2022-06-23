@@ -53,134 +53,129 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    @import "../assets/sass/libs/breakpoint-sass/stylesheets/breakpoint";
-    .button-top {
-        bottom: 60px;
+@import "../assets/sass/libs/breakpoint-sass/stylesheets/breakpoint";
+.button-top {
+    bottom: 60px;
+    height: 1px;
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+
+    .container {
+        position: relative;
+        width: inherit;
         height: 1px;
-        position: fixed;
+    }
+
+    a {
+        background: linear-gradient(45deg, rgba(36, 57, 73, 1) 0%, rgba(81, 127, 164, 1) 100%);
+        backface-visibility: hidden; /* bug fix for chrome browser */
+        border-radius: 50%;
+        display: inline-block;
+        line-height: 44px;
+        width: 44px;
+        height: 44px;
+        opacity: .7;
+        position: absolute;
+        right: 16px;
+        transition: all 0.3s;
+        text-align: center;
+        text-decoration: none;
+    }
+
+    .btn-arrow {
+        left: 0;
+        position: absolute;
+        text-align: center;
+        top: 0px;
         width: 100%;
-        z-index: 10;
 
-        .container {
-            position: relative;
-            width: inherit;
-            height: 1px;
-        }
-
-        a {
-            background: linear-gradient(45deg, rgba(36, 57, 73, 1) 0%, rgba(81, 127, 164, 1) 100%);
-            backface-visibility: hidden; /* bug fix for chrome browser */
-            border-radius: 50%;
-            display: inline-block;
-            line-height: 44px;
-            width: 44px;
-            height: 44px;
-            opacity: .7;
-            position: absolute;
-            right: 16px;
-            transition: all 0.3s;
-            text-align: center;
-            text-decoration: none;
-        }
-
-        .btn-arrow {
-            left: 0;
-            position: absolute;
-            text-align: center;
-            top: 0px;
-            width: 100%;
-
-            &::before {
-                color: #fff;
-                content: "\e90a";
-                font-family: icomoon;
-                font-size: 2.5rem;
-            }
-        }
-
-        .text {
-            display: inline-block;
-            margin-top: 3px;
+        &::before {
+            color: #fff;
+            content: "\e90a";
+            font-family: icomoon;
+            font-size: 2.5rem;
         }
     }
+
+    .text {
+        display: inline-block;
+        margin-top: 3px;
+    }
+}
 
 @include breakpoint(screen 769px) {
-        .button-top {
-            a:hover {
-                opacity: 1;
-            }
+    .button-top {
+        a:hover {
+            opacity: 1;
         }
     }
+}
 </style>
 
 <style>
 #footer {
-  background: $footer-bg;
-  font-size: 0.8rem;
-  color: $footer-color;
-
-  > .container {
+    background: #666;
+    font-size: 0.8rem;
+    color: #ffffff;
+}
+#footer .container {
     font-size: 0.9rem;
     padding: 16px;
-
-    > div {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      line-height: 45px;
-
-      & + div {
-        margin-top: 16px;
-      }
-    }
-
-    a {
-      display: inline-block;
-      color: #fff;
-      min-width: 136px;
-    }
-
-    .copyright {
-      color: $footer-copyright-color;
-      font-size: .7rem;
-      line-height: 22px;
-      margin-top: 8px;
-    }
-  }
+}
+#footer div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    line-height: 45px;
 }
 
-@include breakpoint($screen-tablet) {
-  #footer {
+#footer div + div {
+    margin-top: 16px;
+}
+
+#footer a {
+    display: inline-block;
+    color: #fff;
+    min-width: 136px;
+}
+
+.copyright {
+    color: #ffffff;
+    font-size: .7rem;
+    line-height: 22px;
+    margin-top: 8px;
+}
+
+@media screen and (max-width:1060px) {
+#footer {
     min-width: 1200px;
-
-    > .container {
-      font-size: 0.9rem;
-      padding: 24px 0 16px 0;
-      padding-left: 32px;
-      width: 1080px;
-
-      > div {
-        line-height: 23px;
-        max-width: 1024px;
-      }
-
-      div + div {
-        margin-top: 16px;
-      }
-
-      a {
-        font-size: 0.9rem;
-        min-width: auto;
-        min-width: inherit;
-      }
-
-      .copyright {
-        line-height: 8px;
-        margin-top: 16px;
-      }
-    }
-  }
+}
+#footer .container {
+    font-size: 0.9rem;
+    padding: 24px 0 16px 0;
+    padding-left: 32px;
+    width: 1080px;
+}
+#footer .container div {
+    line-height: 23px;
+    max-width: 1024px;
 }
 
+#footer .container div + div {
+    margin-top: 16px;
+}
+
+#footer .container a {
+    font-size: 0.9rem;
+    min-width: auto;
+    min-width: inherit;
+}
+
+.copyright {
+    line-height: 8px;
+    margin-top: 16px;
+}
+}
 </style>
