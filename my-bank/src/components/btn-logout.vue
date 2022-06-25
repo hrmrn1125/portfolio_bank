@@ -26,7 +26,7 @@ export default {
 
 <style>
 .btn-wrap {
-    width: 111px;
+    width: 126px;
     height: 40px;
     background: #BF0000;
     border-color: #bf0000;
