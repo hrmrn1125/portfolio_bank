@@ -16,49 +16,49 @@
             <div class="deposit-account">
                 <a href="#" class="link-nav">円普通預金（代表口座）</a>
                 <span class="amount">
-                    <span class="base"><span class="money" v-text="dispOrdinaryDepositTotalBalance"></span><small class="unit">円</small></span>
+                    <span class="base"><span class="money">5,000</span><small class="unit">円</small></span>
                     <a href="#" class="desktop-only button button-ghost">振込</a>
                 </span>
             </div>
             <div class="uncollected-amount full-width text-minus">
-                <span>未収金：</span><span v-text="dispUncollectedAmount"></span>
+                <span>未収金：</span><span>300</span>
                 <small class="unit">円</small>
             </div>
             <div class="limit-amount">
                 <a href="#" class="link-nav">
                     <span>振込限度額（<span class="num">1</span>日）</span>
                 </a>
-                <div class="text-small text-right">
-                    <span class="num" v-text="dispAvailableTransferAmount"></span><span>円 /</span>
-                    <span class="num" v-text="dispTransferDailyLimit"></span><span>円</span>
+                <div class="text-right">
+                    <span>1,000</span><small class="unit">円&emsp;/&emsp;</small>
+                    <span>100</span><small class="unit">万円</small>
                 </div>
             </div>
             <div class="smartphone-only sp-transfer-btn-wrapper">
                 <a href="#" class="button button-ghost full-size">振込</a>
             </div>
-            <template>
+            <div>
                 <div class="securities-account-balance">
                     <a href="#" class="link-nav">証券コネクト口座</a>
                     <span class="amount">
-                        <span v-text="dispSweepTotalBalance"></span><small class="unit">円</small>
+                        <span class="base"><span class="money">10,000</span><small class="unit">円</small></span>
+                        <a href="#" class="button button-ghost">振替</a>
                     </span>
-                    <a href="#" class="button button-ghost">振替</a>
                 </div>
                 <div class="to-sec-link">
-                    <a href="/login/sec-redirect" target="_blank" class="link-nav">GMOクリック証券 Webサイトへ</a>
+                    <a href="#" class="link-nav">HARAクリック証券 Webサイトへ</a>
                 </div>
-            </template>
+            </div>
             <div class="other-accounts-balance">
                 <p>
                     <a href="#" class="link-nav">円定期預金（総額）</a>
                     <span class="amount">
-                        <span v-text="dispTermDepositTotalBalance"></span><small class="unit">円</small>
+                        <span class="base"><span>1,001</span><small class="unit">円</small></span>
                     </span>
                 </p>
                 <p>
                     <a href="#" class="link-nav">外貨普通預金（総評価額）</a>
                     <span class="amount">
-                        <span v-text="dispFcyOrdinaryDepositTotalJpyBalance"></span><small class="unit">円</small>
+                        <span class="base"><span>1.000</span><small class="unit">円</small></span>
                     </span>
                 </p>
             </div>
@@ -68,13 +68,14 @@
                 <div>現在のカスタマーステージ：<span class="rank-name" v-text="dispRankName"></span></div>
                 <a href="#" class="link-nav text-right">カスタマーステージについて</a>
             </div>
-            <chart-area></chart-area>
+            <chart-area :chart-data="chartData"></chart-area>
         </div>
     </div>
 </template>
 
 <script>
 import chartArea from '@/components/chart-area';
+import { formatNumberString } from '@/assets/js/string-utils';
 
 const EMPTY = '-';
 
@@ -90,7 +91,6 @@ export default {
             chartArea: null,
             queryDatetime: '',
             rankName: 'マスターステージ',
-            transferDailyLimit: '100000000',
             transferFeeFreeCount: '5',
             uncollectedAmount: '300',
             chartData: {
@@ -117,7 +117,7 @@ export default {
             return EMPTY;
         },
         dispAvailableTransferAmount () {
-            return this.availableTransferAmount;
+            return formatNumberString(this.availableTransferAmount);
         },
         dispBranchCode () {
             return this.branchCode;
@@ -181,8 +181,9 @@ export default {
 }
 
 .account-overview-details {
-    font-size: 14px;
+    font-size: 16px;
     width: 55%;
+    margin-right: 20px;
 }
 
 .account-overview-details a {
@@ -225,8 +226,7 @@ export default {
     color: rgb(36, 39, 43);
     display: flex;
     justify-content: space-between;
-    margin-top: 24px;
-    margin-left: 20px;
+    margin: 36px 0 0 20px;
     min-height: 32px;
     position: relative;
 }
@@ -294,7 +294,7 @@ export default {
 .limit-amount {
     display: flex;
     justify-content: space-between;
-    margin: 24px 0 0 20px;
+    margin: 36px 0 0 20px;
 }
 
 .limit-amount .text-right .num {
@@ -302,8 +302,72 @@ export default {
     margin: 0 4px;
 }
 
+.securities-account-balance {
+    display: flex;
+    justify-content: space-between;
+    margin: 36px 0 0 20px;
+    min-height: 32px;
+    position: relative;
+}
+
+.to-sec-link {
+    text-align: left;
+    margin-left: 20px;
+}
+
+.to-sec-link .link-nav {
+    color: rgb(229, 115, 115);
+}
+
+.to-sec-link:after {
+    content: "";
+    position: absolute;
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-top: 1px solid rgb(229, 115, 115);
+    border-right: 1px solid rgb(229, 115, 115);
+    transform: rotate(45deg);
+    margin: 7px 0 0 4px;
+}
+
+.other-accounts-balance {
+    margin-bottom: 20px;
+}
+
+.other-accounts-balance p {
+    display: flex;
+    justify-content: space-between;
+    margin: 36px 0 0 20px;
+    min-height: 32px;
+    position: relative;
+}
+
 .chart-area {
     width: 45%;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+
+.customer-stage {
+    text-align: right;
+}
+
+.customer-stage .link-nav {
+    color: rgb(229, 115, 115);
+    margin-right: 20px;
+}
+
+.customer-stage .link-nav:after {
+    content: "";
+    position: absolute;
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-top: 1px solid rgb(229, 115, 115);
+    border-right: 1px solid rgb(229, 115, 115);
+    transform: rotate(45deg);
+    margin: 7px 0 0 4px;
 }
 
 @media screen and (min-width:1400px) {

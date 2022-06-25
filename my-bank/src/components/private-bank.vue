@@ -78,7 +78,7 @@ export default {
 }
 
 .text-warning a {
-    color: #BF0000;
+    color: #666;
 }
 
 .warning-answer::after {
@@ -90,7 +90,7 @@ export default {
     border-top: 1px solid #BF0000;
     border-right: 1px solid #BF0000;
     transform: rotate(45deg);
-    margin: 8px 0 0 4px;
+    margin: 7px 0 0 4px;
 }
 
 .warning-icon {

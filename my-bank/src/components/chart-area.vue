@@ -1,25 +1,33 @@
 <template>
     <div class="account-summary">
         <div class="graph">
-            <div class="chart-wrapper"><canvas ref="chart" :id="id"></canvas></div>
+            <div class="chart-wrapper">
+                <canvas ref="chart" :id="id"></canvas>
+            </div>
         </div>
         <div class="summary">
-            <p class="text-left text-description">総残高(評価額)</p>
-            <p>
-                <span class="total amount">
-                    <span v-text="dispTotalBalance"></span>
-                    <span class="unit">円</span>
-                </span>
-            </p>
-            <p class="before-ratio">
-                <span class="text-description">前日比</span>
-                <span class="amount">
-                    <span v-text="dispDayBeforeRatio"></span>
-                    <span class="unit">円</span>
-                </span>
-            </p>
+            <div class="both">
+                <p class="text-left text-description">総残高(評価額)</p>
+                <p class="total">
+                    <span class="amount">
+                        <span>11,000</span>
+                        <span class="unit">円</span>
+                    </span>
+                </p>
+            </div>
+            <div class="both">
+                <p class="before-ratio">
+                    <span class="text-description">前日比</span>
+                    <span class="amount">
+                        <span>+1</span>
+                        <span class="unit">円</span>
+                    </span>
+                </p>
+            </div>
             <p class="text-sub">
-                <small>最終更新日時: <span v-text="dispLastUpdateDatetime"></span></small>
+                <small>最終更新日時: </small>
+                <br class="br-none">
+                <small v-text="dispLastUpdateDatetime"></small>
             </p>
         </div>
     </div>
@@ -104,7 +112,7 @@ export default {
             }).map(data => {
                 return {
                 label: data.label,
-                balance: formatNumberString(data.balance)
+                balance: data.balance
                 };
             });
         },
@@ -169,8 +177,8 @@ export default {
                         callbacks: {
                             label: function (item, data) {
                                 let val = data.datasets[item.datasetIndex].data[item.index];
-                                let _data = data.labels[item.index];
-                                return [_data.label, `${_data.balance}円`, `${val}%`];
+                                let chartData = data.labels[item.index];
+                                return [chartData.label, `${chartData.balance}円`, `${val}%`];
                             }
                         },
                         xPadding: 10,
@@ -241,7 +249,7 @@ export default {
                     }
                 },
                 data: {
-                    labels: this.labels, //[{ label: '普通預金', balance: '3,000円' }, { label: '証券コネクト口座残高', balance: '50,000円' }, { label: '定期預金', balance: '12,000円' }, { label: '外貨総残高', balance: '100円' }],
+                    labels: this.labels,
                     datasets: [{
                         label: '#',
                         data: this.balanceRatios,
@@ -265,3 +273,136 @@ export default {
     }
 };
 </script>
+
+<style>
+.account-summary {
+    display: block;
+    position: relative;
+    text-align: right;
+}
+
+.account-summary .chart-wrapper {
+    z-index: 10;
+    margin-top: 24px;
+}
+
+.summary .both {
+    display: flex;
+    justify-content: space-between;
+}
+
+.summary .both .before-ratio {
+    display: flex;
+    justify-content: space-between;
+}
+
+.summary .both .amount {
+    display: inline-block;
+    text-align: right;
+    vertical-align: baseline;
+}
+
+.summary .both .before-ratio .amount {
+    text-align: right;
+}
+
+
+.summary .total .amount {
+    align-items: flex-end;
+}
+
+.summary .total .amount span:not(.unit) {
+    font-size: 1.3rem;
+}
+
+.before-ratio .amount {
+    align-items: flex-end;
+}
+
+.before-ratio span:first-child {
+    text-align: left;
+}
+
+.summary p:last-child {
+    margin-bottom: 0;
+}
+
+#chartjs-tooltip {
+    position: absolute;
+    color: #fff;
+    background-color: #666;
+    z-index: 10;
+    border-radius: 3px;
+    padding: 6px 10px;
+    font-size: 80%;
+    min-width: 96px;
+    text-align: center;
+}
+
+@media screen and (min-width: 1060px) {
+.account-summary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.account-summary .graph {
+    align-items: center;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    max-width: none;
+    width: 100%;
+}
+
+.account-summary .graph .chart-wrapper {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    margin-top: 24px;
+    position: relative;
+}
+
+.account-summary .summary {
+    position: absolute;
+    text-align: left;
+    left: 50%;
+    top: 50%;
+    margin-top: 10px;
+    position: absolute;
+    transform: translate(-50%, -50%);
+}
+
+.account-summary .summary p {
+    margin: 8px 0;
+}
+
+.account-summary .summary p :nth-child(2) {
+    text-align: right;
+}
+
+.account-summary .summary p :nth-child(3) {
+    align-items: center;
+    display: flex;
+}
+
+.account-summary .summary p .amount {
+    flex: 1 1 auto;
+}
+
+.account-summary .before-ratio {
+    flex-direction: row;
+}
+
+.account-summary .amount span:not(.unit) {
+    font-size: 1.2rem;
+}
+
+.account-summary .amount.total span:not(.unit) {
+    font-size: 1.6rem;
+}
+}
+
+</style>
+
