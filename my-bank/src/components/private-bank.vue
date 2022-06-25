@@ -78,7 +78,7 @@ export default {
 }
 
 .text-warning a {
-    color: #666;
+    color: #BF0000;
 }
 
 .warning-answer::after {
