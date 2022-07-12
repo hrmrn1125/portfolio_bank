@@ -339,7 +339,7 @@ export default {
     text-align: center;
 }
 
-@media screen and (min-width: 1060px) {
+@media screen and (min-width: 1300px) {
 .account-summary {
     display: flex;
     align-items: center;
