@@ -195,7 +195,7 @@ export default {
     data () {
         return {
             currentDatetime: '20220808120000000',
-            customerName: 'あおぞら太郎',
+            customerName: 'はら太郎',
             isActive: '1',
             beginner: require('@/assets/img/beginner.svg'),
             lock: require('@/assets/img/lock.svg'),
