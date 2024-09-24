@@ -6,8 +6,8 @@
                     <p v-text="footerItem"></p>
                 </div>
             </div>
-            <div class="copyright">GMOあおぞらネット銀行株式会社 <br class="smartphone-only">登録金融機関 関東財務局長（登金）第665号<br class="smartphone-only"> 一般社団法人 金融先物取引業協会加入</div>
-            <div class="copyright">Copyright © GMO Aozora Net Bank, Ltd. All Rights Reserved.</div>
+            <div class="copyright">はら銀行株式会社 <br class="smartphone-only">登録金融機関 関東財務局長（登金）第７６７６７６号<br class="smartphone-only"> 一般社団法人 金融先物取引業協会加入</div>
+            <div class="copyright">Copyright © Hara Net Bank, Ltd. All Rights Reserved.</div>
         </div>
         <div class="button-top">
             <div class="container">
