@@ -238,7 +238,6 @@
                             </a>
                         </li>
                     </ul>
-                    <button-logout class="button-logout-wrapper"></button-logout>
                 </div>
             </div>
         </div>
@@ -247,16 +246,12 @@
 
 <script>
 
-import buttonLogout from '@/components/button-logout';
-
 export default {
+    name: 'spHeader',
     props: {
         customerName: {
             type: String
         }
-    },
-    components: {
-        buttonLogout
     },
     data () {
         return {
@@ -461,14 +456,6 @@ i {
 
 #nav-content ul .menu-target::before {
     content: none;
-}
-
-#nav-content .sp-menu-top {
-    background-image: url('/static/img/drawer-bg.png');
-    background-size: contain;
-    text-align: right;
-    height: 118px;
-    width: 272px;
 }
 
 #nav-content .sp-menu-top.icon-group {

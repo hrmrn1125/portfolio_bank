@@ -1,7 +1,7 @@
 <template>
     <header id="header">
         <section class="header-top">
-            <sp-bank-header class="smartphone-only" :customerName="name"></sp-bank-header>
+            <sp-header class="smartphone-only" :customerName="name"></sp-header>
             <div class="logo"><span class="desktop-only">HARAネット銀行</span></div>
             <div class="user desktop-only flex">
                 <div href="" class="user-info">
@@ -183,13 +183,13 @@
 
 <script>
 import { formatDate } from '@/assets/js/date-utils';
-import spBankHeader from '@/components/sp-bank-header';
+import spHeader from '@/components/sp-header';
 import btnLogout from '@/components/btn-logout';
 
 export default {
     name: 'bankHeader',
     components: {
-        spBankHeader,
+        spHeader,
         btnLogout
     },
     data () {
