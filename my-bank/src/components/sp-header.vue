@@ -5,7 +5,7 @@
                 <input id="nav-input" type="checkbox" v-model="navToggle" class="nav-unshown">
                 <label class="nav-open" for="nav-input"><img src="/static/img/menu.svg"></label>
                 <div class="logo">
-                    <img src="/static/img/logo-sp.svg">
+                    <img src="/static/img/bank-logo.png">
                 </div>
                 <label class="nav-unshown" id="nav-close" for="nav-input">
                     <img class="button-close" src="/static/img/close.svg">
