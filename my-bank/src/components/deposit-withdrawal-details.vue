@@ -29,27 +29,27 @@ export default {
             statementList: [
                 {
                     amount: '12345',
-                    remark: '振込 カ）アオゾラギンコウ アオゾラ タロウ',
+                    remark: '振込 カ）ハラギンコウ ハラ タロウ',
+                    valueDate: '20220705'
+                },
+                {
+                    amount: '12345',
+                    remark: '振込 カ）ハラギンコウ ハラ タロウ',
                     valueDate: '20170705'
                 },
                 {
                     amount: '12345',
-                    remark: '振込 カ）アオゾラギンコウ アオゾラ タロウ',
+                    remark: '振込 カ）ハラギンコウ ハラ タロウ',
                     valueDate: '20170705'
                 },
                 {
                     amount: '12345',
-                    remark: '振込 カ）アオゾラギンコウ アオゾラ タロウ',
+                    remark: '振込 カ）ハラギンコウ ハラ タロウ',
                     valueDate: '20170705'
                 },
                 {
                     amount: '12345',
-                    remark: '振込 カ）アオゾラギンコウ アオゾラ タロウ',
-                    valueDate: '20170705'
-                },
-                {
-                    amount: '12345',
-                    remark: '振込 カ）アオゾラギンコウ アオゾラ タロウ',
+                    remark: '振込 カ）ハラギンコウ ハラ タロウ',
                     valueDate: '20170705'
                 }
             ]
