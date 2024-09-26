@@ -148,7 +148,7 @@ export default {
     margin-top: 8px;
 }
 
-@media screen and (max-width:1060px) {
+@media screen and (max-width:1600px) {
 #footer {
     min-width: 1200px;
 }

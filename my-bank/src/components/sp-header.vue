@@ -25,7 +25,9 @@
                         </div>
                         <div>
                             <div>
-                                <span class="username-wrapper"><span class="username" v-text="customerName"></span>さま</span>
+                                <span class="username-wrapper">
+                                  <span class="username" v-text="customerName"></span>さま
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -320,7 +322,6 @@ export default {
 }
 
 #header .username-wrapper {
-    align-items: baseline;
     display: flex;
     padding: 18px 32px 16px 16px;
 }
@@ -599,7 +600,7 @@ _:-ms-lang(x), #header .container{
     min-width: 100%;
 }
 
-@media screen and (min-width:1060px) {
+@media screen and (min-width:1600px) {
 #header {
     font-size: 12px;
     min-width: 1200px;

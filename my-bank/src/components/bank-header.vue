@@ -20,8 +20,10 @@
                         </span>
                     </div>
                     <div>
-                        <span class="username-wrapper"><span class="username" v-text="name"></span><span>さま</span></span>
-                        <span class="datetime" v-text="dispCurrentDatetime"></span>
+                        <span class="username-wrapper">
+                          <span class="username" v-text="name"></span><span>さま</span>
+                          <span class="datetime" v-text="dispCurrentDatetime"></span>
+                        </span>
                     </div>
                 </div>
                 <btn-logout></btn-logout>
@@ -315,6 +317,8 @@ div.header-mini-menu {
 
 .header-sub td {
     color: #ffffff;
+    background-color: #BF0000;
+    border: #BF0000;
     text-align: center;
     vertical-align: middle;
     width: 11%;
@@ -359,7 +363,7 @@ div.header-mini-menu {
     border-left: none;
 }
 
-@media screen and (min-width:871px) and (max-width:1060px) {
+@media screen and (min-width:871px) {
     div.header-mini-menu {
         display: flex;
     }
